@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import Axios from 'axios';
+import '../_styles/App.scss';
 import world from '../world.svg';
-import Bootstrap from '../_styles/bootstrap-grid.min.css'
+import Bootstrap from '../_styles/bootstrap-grid.min.css';
+// import GoogleMapReact from 'google-map-react';
+
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+
+
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Country extends Component {
 
@@ -12,9 +19,17 @@ class Country extends Component {
       this.setState({ ...response.data })
     })
   }
+
   goBack = () => {
     this.props.history.push('/');
   }
+  static defaultProps = {
+    center: {
+      lat: 59.95,
+      lng: 30.33
+    },
+    zoom: 11
+  };
   render() {
     const { state } = this;
     return <>
@@ -25,44 +40,75 @@ class Country extends Component {
       </nav>
       {state ? <main className="container-fluid">
         <div className="row">
-          <div className="col-12 col-lg-4 "><img src={state.flag} className="flag heightt" alt="flag" /></div>
-
-          <div className="col-12 col-lg-4 ">
-            <div className=" heightt">
-              <div className="collingcod "> CALLING CODE </div>
-              <div className="" >
-                {state.callingCodes}
+          <div className="col-12 col-lg-4"><img src={state.flag} className="flag" alt="flag" /></div>
+          <div className="col-12 col-lg-4" style={{ background: '#ffdc37', padding: 0, textAlign: 'center' }}>
+            <div style={{ background: 'black', color: 'white', textAlign: 'center', padding: '15px' }}>CALLING CODE</div>
+            <div><h1>{state.callingCodes}</h1></div>
+          </div>
+          <div className="col-12 col-lg-4">
+            <div style={{ background: '#504e4e', color: 'white', height: '100%', padding: '15px' }}>
+              <div>{state.name}</div>
+              <div>
+                <ul className="info">
+                  <li><span>Native Name:</span> {state.nativeName}</li>
+                  <li><span>Capital:</span> {state.capital}</li>
+                  <li><span>Region:</span> {state.region}</li>
+                  <li><span>Population:</span> {state.population}</li>
+                  <li><span>Languages:</span> {state.languages[0].name}</li>
+                  <li><span>TimeZone:</span> {state.timezones}</li>
+                </ul>
               </div>
             </div>
           </div>
-          <div className="col-12 col-lg-4 ">
-            <div className="infoo" >
-              <ul>
-                <li>
-                  <span>name</span>  : {state.name}
-                </li>
-                <li>
-                  <span>topLevelDomain</span>   :  {state.topLevelDomain}
-                </li>
-                <li>
-                  <span>capital</span>   : {state.capital}
-                </li>
-                <li>
-                  <span>region</span>   : {state.region}
-                </li>
-                <li>
-                  <span>nativeName</span>    : {state.nativeName}
-                </li>
-
+        </div>
+        <div className="row">
+          <div className="col-lg-4">
+            <div style={{ background: 'black', color: 'white', textAlign: 'center', padding: '15px' }}>Capital Weather Report</div>
+            <div>
+              <span><img src="" className="flag" alt="flag" /></span>
+              <ul className="weather-info">
+                <li><span>Wind Speed:</span> {state.nativeName}</li>
+                <li><span>Temprature:</span> {state.capital}</li>
+                <li><span>Humidity:</span> {state.region}</li>
+                <li><span>Visibility:</span> {state.population}</li>
               </ul>
             </div>
           </div>
-        </div>
+          <div className="col-lg-8">
+            <div style={{ height: '100vh', width: '100%' }}>
+              {/* <GoogleMapReact
+                bootstrapURLKeys={{ key: "AIzaSyAdj0C81rA_-Ko03ne6H63lfpvKS-vRNR4",
+              }}
+                defaultCenter={this.props.center}
+                defaultZoom={this.props.zoom}
+              >
+                <AnyReactComponent
+                  lat={59.955413}
+                  lng={30.337844}
+                  text="My Marker"
+                />
+              </GoogleMapReact> */}
+            
+              <Map google={window.google}
+                initialCenter={{}}
+                zoom={14} /> />
+            
+            
+              
+
+            
+             
+             
+                         
+            </div>
+          </div>
+          </div>
+        
       </main> : <span>Loading...</span>}
     </>
   }
 
 }
 
-withRouter(Country)
+withRouter(Country);
 export { Country };
