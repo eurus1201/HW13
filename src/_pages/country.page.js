@@ -6,6 +6,7 @@ import world from '../world.svg';
 import Bootstrap from '../_styles/bootstrap-grid.min.css';
 // import GoogleMapReact from 'google-map-react';
 import GoogleApiWrapper from "./map";
+import MapContainer from "./map";
 
   class Country extends Component {
 
@@ -19,13 +20,7 @@ import GoogleApiWrapper from "./map";
     goBack = () => {
       this.props.history.push('/');
     }
-    static defaultProps = {
-      center: {
-        lat: 59.95,
-        lng: 30.33
-      },
-      zoom: 11
-    };
+    
     render() {
       const { state } = this;
       return <>

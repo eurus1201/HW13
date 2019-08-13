@@ -14,8 +14,8 @@ constructor (props){
                 google={this.props.google}
              
                 center={{
-                    lat: {lat},
-                    lng: {lng}
+                    lat: this.props.lat,
+                    lng: this.props.lng
                 }}
                 zoom={14}
                 onClick={this.onMapClicked}
@@ -26,7 +26,7 @@ constructor (props){
 
                 <InfoWindow onClose={this.onInfoWindowClose}>
                     <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
+                        {/* <h1>{this.state.selectedPlace.name}</h1> */}
                     </div>
                 </InfoWindow>
             </Map>
@@ -34,6 +34,7 @@ constructor (props){
     }
 }
 
+
 export default GoogleApiWrapper({
     apiKey: ('AIzaSyAdj0C81rA_-Ko03ne6H63lfpvKS-vRNR4')
-})
+})(MapContainer)
