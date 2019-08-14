@@ -1,0 +1,38 @@
+import React, { Component } from "react";
+import Bootstrap from '../_styles/bootstrap-grid.min.css';
+import Axios from 'axios';
+
+class Weather extends Component {
+
+    constructor(props) {
+        super(props);
+        
+        Axios.get('https://api.openweathermap.org/data/2.5/weather' ,{
+            params:{
+                q:`${this.props.city},${this.props.country}`,
+                APPID:'bce54fa8d352ef132f63065a3238fae6'
+            }
+        }) .then(response => {
+            this.setState({  ...response.data })
+        })
+       
+    }
+    render() {
+    // const { state } = this;
+        return (
+
+            <div>
+                <ul>
+                    <li> <span>main weather : </span> {this.state ? this.state.weather[0].main : <span>loading</span>}</li>
+                    <li> <span>description : </span> {this.state ? this.state.weather[0].description : <span>loading</span>}</li>
+                    <li> <span>tempertuer : </span> {this.state ? this.state.main.temp : <span>loading</span>}</li>
+                    
+                </ul>
+            
+
+            </div>
+        )
+    }
+}
+
+export {Weather}

@@ -6,6 +6,7 @@ import world from '../world.svg';
 import Bootstrap from '../_styles/bootstrap-grid.min.css';
 // import GoogleMapReact from 'google-map-react';
 import GoogleApiWrapper from "./map";
+import { Weather} from "./weather";
 import MapContainer from "./map";
 
   class Country extends Component {
@@ -57,17 +58,12 @@ import MapContainer from "./map";
               <div style={{ background: 'black', color: 'white', textAlign: 'center', padding: '15px' }}>Capital Weather Report</div>
               <div>
                 <span><img src="" className="flag" alt="flag" /></span>
-                <ul className="weather-info">
-                  <li><span>Wind Speed:</span> {state.nativeName}</li>
-                  <li><span>Temprature:</span> {state.capital}</li>
-                  <li><span>Humidity:</span> {state.region}</li>
-                  <li><span>Visibility:</span> {state.population}</li>
-                </ul>
+                <Weather city={this.state.capital} country={this.state.alpha2Code} />
               </div>
             </div>
             <div className="col-lg-8">
               <div className="map">
-                < GoogleApiWrapper lat={state.lat} lng={state.lng} />
+                < GoogleApiWrapper lat={state.latlng[0]} lng={state.latlng[1]} />
               </div>
             </div>
           </div>
@@ -78,7 +74,7 @@ import MapContainer from "./map";
 
   }
 
-//   apiKey: 'AIzaSyAdj0C81rA_-Ko03ne6H63lfpvKS-vRNR4'
+// google map  apiKey: 'AIzaSyAdj0C81rA_-Ko03ne6H63lfpvKS-vRNR4'
 
 withRouter(Country)
 export { Country }
