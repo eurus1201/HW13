@@ -13,23 +13,25 @@ constructor (props){
         return (
             <Map
                 google={this.props.google}
-             
-                center={{
+                initialCenter={{
                     lat: this.props.lat,
-                    lng: this.props.lng
-                }}
+                    lng: this.props.lng }}
+                style={{ height: "480px", width: "100%" }}
+               
+                // Center={{
+                //     lat: this.props.lat,
+                //     lng: this.props.lng
+                // }}
+
                 zoom={14}
                 onClick={this.onMapClicked}
             >
 
                 <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
+                    name={this.props.name}
+                    position={{ lat: this.props.lat, lng: this.props.lng }}  />
 
-                <InfoWindow onClose={this.onInfoWindowClose}>
-                    <div>
-                        {/* <h1>{this.state.selectedPlace.name}</h1> */}
-                    </div>
-                </InfoWindow>
+
             </Map>
         );
     }

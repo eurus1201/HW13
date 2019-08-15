@@ -7,7 +7,9 @@
   background: rgb(70,156,240);
   background: linear-gradient(34deg, rgba(70,156,240,1) 16%, rgba(0,212,255,0.9475140397956058) 100%);
 }
-
+body{
+  overflow-x: hidden;
+}
 .App-logo {
   height: 16vmin;
   pointer-events: none;

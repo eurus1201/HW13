@@ -18,18 +18,19 @@ class Weather extends Component {
        
     }
     render() {
-    // const { state } = this;
+   
         return (
 
             <div>
-                <ul>
+                <div id="icon"><img
+                    id="wicon"
+                    src={this.state && 'http://openweathermap.org/img/w/' + this.state.weather[0].icon + '.png'}
+                    alt="Weather icon" /></div>
+                <ul>                   
                     <li> <span>main weather : </span> {this.state ? this.state.weather[0].main : <span>loading</span>}</li>
                     <li> <span>description : </span> {this.state ? this.state.weather[0].description : <span>loading</span>}</li>
-                    <li> <span>tempertuer : </span> {this.state ? this.state.main.temp : <span>loading</span>}</li>
-                    
+                    <li> <span>tempertuer : </span> {this.state ? this.state.main.temp : <span>loading</span>}</li>                  
                 </ul>
-            
-
             </div>
         )
     }
