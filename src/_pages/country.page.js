@@ -104,7 +104,7 @@ class Country extends Component {
           </div>
 
           <div className="col-lg-3 col-12 Neightbers">
-            <div className="weather">Neightbers:</div>
+            <div className="weather">Neighbors:</div>
             <div>
               {state.borders.map((item, index) => <li><Link to={`/country/${item}`}>{item}</Link></li>)}
             </div>
