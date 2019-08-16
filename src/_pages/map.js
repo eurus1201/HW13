@@ -1,6 +1,6 @@
 import React , { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import Bootstrap from '../_styles/bootstrap-grid.min.css';
+
 
 export class MapContainer extends Component {
 
@@ -16,14 +16,14 @@ constructor (props){
                 initialCenter={{
                     lat: this.props.lat,
                     lng: this.props.lng }}
-                style={{ height: "480px", width: "100%" }}
+                style={{ height: "300px", width: "100%" }}
                
                 // Center={{
                 //     lat: this.props.lat,
                 //     lng: this.props.lng
                 // }}
 
-                zoom={14}
+                zoom={4}
                 onClick={this.onMapClicked}
             >
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Bootstrap from '../_styles/bootstrap-grid.min.css';
 import Axios from 'axios';
 
 class Weather extends Component {
@@ -29,7 +28,7 @@ class Weather extends Component {
                 <ul>                   
                     <li> <span>main weather : </span> {this.state ? this.state.weather[0].main : <span>loading</span>}</li>
                     <li> <span>description : </span> {this.state ? this.state.weather[0].description : <span>loading</span>}</li>
-                    <li> <span>tempertuer : </span> {this.state ? this.state.main.temp : <span>loading</span>}</li>                  
+                    <li> <span>tempertuer `C : </span> {this.state ? (this.state.main.temp)-273.15  : <span>loading</span>}</li>                  
                 </ul>
             </div>
         )
